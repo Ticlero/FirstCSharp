@@ -1,0 +1,7 @@
+C:\Users\cbisc\source\FirstCSharp\example01\bin\Debug\example01.exe.config
+C:\Users\cbisc\source\FirstCSharp\example01\bin\Debug\example01.exe
+C:\Users\cbisc\source\FirstCSharp\example01\bin\Debug\example01.pdb
+C:\Users\cbisc\source\FirstCSharp\example01\obj\Debug\example01.csprojAssemblyReference.cache
+C:\Users\cbisc\source\FirstCSharp\example01\obj\Debug\example01.csproj.CoreCompileInputs.cache
+C:\Users\cbisc\source\FirstCSharp\example01\obj\Debug\example01.exe
+C:\Users\cbisc\source\FirstCSharp\example01\obj\Debug\example01.pdb
