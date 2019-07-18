@@ -7,8 +7,12 @@ using static System.Console;
 
 namespace example01
 {
+
     class Program
     {
+        enum DialogResult { YES, NO, CANCEL, CONFIRM, OK } //열거 형식 상수 enum 열거 형식명 : (기본자료형) { 상수1, 상수2 }  DialogResult라는 데이터 형식 생성
+        enum DialogResult2 { YES=10, NO, CANCEL, CONFIRM = 50, OK}
+
         static void Main(string[] args)
         {
             //print_01(); //기본 데이터 형식 - 정수
@@ -26,6 +30,10 @@ namespace example01
             //print_13(); //부동 소수점 형식과 정수형식 간의 변환
             //print_14(); //String 과 정수형 표현식 간의 변환
             //print_15(); //상수
+            //print_16(); //열거형식 상수
+            //print_17(); //Nullable 변수
+            //print_18(); //var형 변수 컴파일러가 알아서 데이터 형식을 찾아줌. var는 nullable 불가, 및 지역변수로만 사용
+            //print_19(); //CTS - Common Type System 공용형식 시스템 - 데이터 형식의 표준화
         }
 
         static void print_01()
@@ -251,6 +259,84 @@ namespace example01
             Console.WriteLine(MAX_INT);
             Console.WriteLine(MIN_INT);
         }
+
+        static void print_16()
+        {
+
+            WriteLine((int)DialogResult.YES);
+            WriteLine((int)DialogResult.NO);
+            WriteLine((int)DialogResult.CANCEL);
+            WriteLine((int)DialogResult.CONFIRM);
+            WriteLine((int)DialogResult.OK);
+
+            DialogResult result = DialogResult.YES; //DialogResult 형식
+
+            WriteLine(result == DialogResult.YES);
+            WriteLine(result == DialogResult.OK);
+            WriteLine(result == DialogResult.NO);
+            WriteLine(result == DialogResult.CONFIRM);
+            WriteLine(result == DialogResult.CANCEL);
+
+            WriteLine((int)DialogResult2.YES);
+            WriteLine((int)DialogResult2.NO);
+            WriteLine((int)DialogResult2.CANCEL);
+            WriteLine((int)DialogResult2.CONFIRM);
+            WriteLine((int)DialogResult2.OK);
+        }
+
+        static void print_17()
+        {
+            int? a = null;
+            float? b = null;
+            double? c = null;
+
+            WriteLine(a.HasValue); 
+            WriteLine(a != null);
+
+            a = 3;
+
+            WriteLine(a.HasValue);//HasValue 값이 있는지 없는지
+            WriteLine(a != null);
+            WriteLine(a.Value);//Value Nullable변수가 가진 값을 나타냄
+        }
+
+        static void print_18()
+        {
+            var a = 123;
+            var b = "string";
+            var c = 1.5f;
+            var d = 3.14567891011121314151617181920;
+            var e = 3.1548361111111111111111135487989143131531351m;
+            var f = 'C';
+            var g = new int[] { 10, 11, 12, 13, 14,15};
+
+            WriteLine("TYPE : {0}, Value : {1}", a.GetType().ToString(), a);
+            WriteLine("TYPE : {0}, Value : {1}", b.GetType(), b);
+            WriteLine("TYPE : {0}, Value : {1}", c.GetType(), c);
+            WriteLine("TYPE : {0}, Value : {1}", d.GetType(), d);
+            WriteLine("TYPE : {0}, Value : {1}", e.GetType(), e);
+            WriteLine("TYPE : {0}, Value : {1}", f.GetType(), f);
+            WriteLine("TYPE : {0}, Value : {1}", g.GetType(), g);
+
+        }
+
+        static void print_19()
+        {
+            System.Int32 a = 30;
+            int b = 64;
+            WriteLine("TYPE : {0}, Value : {1}", a.GetType(), a);
+            WriteLine("TYPE.ToString() : {0}, Value : {1}", a.GetType().ToString(), a);
+            WriteLine("TYPE : {0}, Value : {1}", b.GetType(), b);
+
+            System.String s = "나 스트링";
+            string s2 = "나 스트링2";
+
+            WriteLine("TYPE : {0}, Value : {1}", s.GetType(), s);
+            WriteLine("TYPE : {0}, Value : {1}", s2.GetType(), s2);
+
+        }
+
+
     }
 
    
