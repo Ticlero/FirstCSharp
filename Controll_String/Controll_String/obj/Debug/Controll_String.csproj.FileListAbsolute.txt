@@ -1,0 +1,7 @@
+D:\C# training\Controll_String\Controll_String\bin\Debug\Controll_String.exe.config
+D:\C# training\Controll_String\Controll_String\bin\Debug\Controll_String.exe
+D:\C# training\Controll_String\Controll_String\bin\Debug\Controll_String.pdb
+D:\C# training\Controll_String\Controll_String\obj\Debug\Controll_String.csprojAssemblyReference.cache
+D:\C# training\Controll_String\Controll_String\obj\Debug\Controll_String.csproj.CoreCompileInputs.cache
+D:\C# training\Controll_String\Controll_String\obj\Debug\Controll_String.exe
+D:\C# training\Controll_String\Controll_String\obj\Debug\Controll_String.pdb
