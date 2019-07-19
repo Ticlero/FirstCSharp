@@ -55,6 +55,32 @@ namespace Method_example
             a = temp;
         }
 
+        
+        public void Divide(int a, int b, ref int quotient, ref int remainder) //ref 대신 out 키워드를 사용하게되면 출력 전용 매개변수를 만들 수 있음
+        {
+            quotient = a / b;
+            remainder = a % b;
+        }
+        
+        public void Divide_2(int a, int b, out int quotient, out int remainder) //ref 대신 out 키워드를 사용하게되면 출력 전용 매개변수를 만들 수 있음
+        {
+            quotient = a / b;
+            remainder = a % b;
+        }
+
+        public int Sum(params int[] args)
+        {
+            Console.Write("Summing...");
+            int sum = 0;
+            foreach (int elements in args)
+            {
+                Console.Write(elements + ", ");
+                sum += elements;
+            }
+            Console.WriteLine();
+            return sum;
+        } //가변길이의 매개변수를 만들기 위한 키워드 'params'
+
         private int getterA()
         {
             return this.a;

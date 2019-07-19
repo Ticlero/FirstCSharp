@@ -10,7 +10,9 @@ namespace Method_example
     {
         static void Main(string[] args)
         {
-
+            //print_04();
+            WriteLine(print_05("Hello"));
+           
         }
 
         static void print_01()
@@ -44,7 +46,46 @@ namespace Method_example
 
         static void print_03()
         {
+            Calcul_tool ct = new Calcul_tool();
+            int quotient = 0;
+            int remainder = 0;
+            int c = 0, d = 0;
 
+
+            WriteLine("ref를 통한 출력용 매개변수를 이용하여 값 반환");
+            ct.Divide(5, 7, ref quotient, ref remainder);
+            WriteLine($"ref::5 / 7= {quotient}({remainder})");
+
+            WriteLine("out을 통한 출력용 매개변수를 이용하여 값 반환");
+            ct.Divide_2(3, 4, out c, out d);
+            WriteLine($"out::3 / 4= {c}({d})");
+        }//출력 전용 매개변수 #01
+
+        static void print_04()
+        {
+            Calcul_tool ct = new Calcul_tool();
+            
+            WriteLine("SUM: {0}",ct.Sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        }
+
+        static string print_05(string input)
+        {
+            var arr = input.ToCharArray();
+
+            for(int i=0; i< arr.Length; i++)
+            {
+                arr[i] = ToLowerChar(i);
+            }
+
+            char ToLowerChar(int i)
+            {
+                if (arr[i] < 65 || arr[i] > 90)
+                    return arr[i];
+                else
+                    return (char)(arr[i] + 32);
+            }
+
+            return new string(arr);
         }
     }
 }
