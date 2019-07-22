@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_example
 {
-    class This_generator
+    partial class This_generator //partial 키워드를 통해 클래스를 분할하여 관리 할 수 있음
     {
         private int a = 0, b = 0, c = 0;
 
@@ -26,13 +26,16 @@ namespace Class_example
             //this.a = 12345;
             //this.b = b;
             this.c = c;
-        }
+        }      
+    }
 
+    partial class This_generator
+    {
         public int GetA()
         {
             return this.a;
         }
-        
+
         public int GetB()
         {
             return this.b;

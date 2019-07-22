@@ -46,7 +46,10 @@
     <Compile Include="AccessModifier.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Derived.cs" />
+    <Compile Include="Extendmethod.cs" />
     <Compile Include="MyClass.cs" />
+    <Compile Include="NestedClass.cs" />
+    <Compile Include="Overriding_test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="This_generator.cs" />
