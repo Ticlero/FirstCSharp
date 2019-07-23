@@ -50,8 +50,10 @@
     <Compile Include="FlyingCar.cs" />
     <Compile Include="IFlyable.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IProperty.cs" />
     <Compile Include="IRunnable.cs" />
     <Compile Include="Main_Class.cs" />
+    <Compile Include="Noname_proper.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />

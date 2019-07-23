@@ -12,7 +12,9 @@ namespace InterFace_Abstrat
         {
             //print_01(); //인터페이스 예제
             //print_02(); //인터페이스 다중 상속
-            print_03();
+            //print_03(); //property get, set
+            //print_04(); //무명형식
+            print_05();
         }
 
         static void print_01()
@@ -54,5 +56,27 @@ namespace InterFace_Abstrat
         {
             Property p = new Property();
         }
+
+        static void print_04()
+        {
+            Noname_proper np = new Noname_proper();
+        }
+
+        static void print_05()
+        {
+            Product p1 = new Product()
+            { ProductName = "RAM", ProductValue = "80_000" };
+            Product p2 = new Product()
+            { ProductName = "Fan", ProductValue = "50_000" };
+            Product p3 = new Product()
+            {
+                ProductName = "Air conditioner",
+                ProductValue = "3_000_000"
+            };
+            p1.print();
+            p2.print();
+            p3.print();
+        }
+
     }
 }
