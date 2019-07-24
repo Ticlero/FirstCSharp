@@ -25,7 +25,7 @@ namespace Exception_Concept
             set;
         }
 
-        public string Rage
+        public string Range
         {
             get;
             set;
