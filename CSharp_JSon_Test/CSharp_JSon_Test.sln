@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp_JSon_Test", "CSharp_JSon_Test\CSharp_JSon_Test.csproj", "{13C64EAA-0177-47B3-95D2-E2CA2B55843E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C64EAA-0177-47B3-95D2-E2CA2B55843E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C64EAA-0177-47B3-95D2-E2CA2B55843E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C64EAA-0177-47B3-95D2-E2CA2B55843E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C64EAA-0177-47B3-95D2-E2CA2B55843E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CA4776D-2BBD-4546-894F-E79C4765A926}
+	EndGlobalSection
+EndGlobal
