@@ -57,6 +57,8 @@ namespace TelegramBot
             {
                 if(e.Message.Text == "/예린")
                 {
+                    //var response = Bot.SendTextMessageAsync(chatId: "@YRSHlovenews", "hello");
+                    //Console.WriteLine(response);
                     await Bot.SendTextMessageAsync(e.Message.Chat.Id, "예린아 사랑해~~ 오빠가");
                 }else if(e.Message.Text == "/며칠?" || e.Message.Text == "/ㅁㅊ" || e.Message.Text == "/며칠" )
                 {
@@ -66,7 +68,16 @@ namespace TelegramBot
                     string dDay = span.ToString();
                     await Bot.SendTextMessageAsync(e.Message.Chat.Id, $"우리가 벌써 사귄지! " + dDay.Substring(0,3) + "일 이나 됐오!!♥♥♥♥♥♥♥" 
                         + e.Message.Chat.Username);
-                }else if(e.Message.Text == "/인라인")
+                }
+                else if (e.Message.Text == "/사랑해")
+                {
+                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, @"울 사당둥이 이뿌니 린둥이 링뽀!
+오빠도 많이많이 사당해여!!
+♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥
+♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥");
+
+                }
+                else if(e.Message.Text == "/인라인")
                 {
                     var inlineKeyboard = new InlineKeyboardMarkup(new[]
                    {
@@ -104,13 +115,14 @@ namespace TelegramBot
 
 /며칠 - 2017년 풋풋했던 대학생때 만나 현재 까지의 사귄 날짜를 말 해준다!
 (/ㅁㅊ ,/며칠 가능)
-/인라인 - 인라인에서 바로 갈 수 있는 링크를 보내준다.
-/키보드 - ");
+/사랑해 오빠가 사랑하는 마음을 더욱 더 듬뿍 담아 사랑해 라는 말을 해준다.
+/인라인 - 개발중
+/키보드 - 개발중");
 
                 }
             }
 
-            await Bot.SendTextMessageAsync(message.Chat.Id, message.Text);
+            //await Bot.SendTextMessageAsync(message.Chat.Id, message.Text);
 
             
         }
