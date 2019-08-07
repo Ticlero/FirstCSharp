@@ -23,6 +23,16 @@ namespace TelegramBot
     public partial class TelegramBot : Form
     {
         private static readonly Telegram.Bot.TelegramBotClient Bot = new TelegramBotClient("910742741:AAGNwe-O-F2U2pw9bN41AbTQhGDIGv4L41k");
+
+        private readonly static string Usage = @"사용법 : 
+/예린 - 오빠가 사랑하는 마음을 듬뿍 담아 사랑해 라는 말을 해준다.
+
+/며칠 - 2017년 풋풋했던 대학생때 만나 현재 까지의 사귄 날짜를 말 해준다!
+(/ㅁㅊ ,/며칠 가능)
+/사랑해 오빠가 사랑하는 마음을 더욱 더 듬뿍 담아 사랑해 라는 말을 해준다.
+/인라인 - 개발중
+/키보드 - 개발중";
+
         public TelegramBot()
         {
             InitializeComponent();
@@ -37,10 +47,22 @@ namespace TelegramBot
             Console.WriteLine("Hello My name is {0}", me.FirstName);
 
             Bot.OnMessage += BotOnMessageReceived;
+
+
             Bot.OnMessageEdited += BotOnMessageReceived;
-            Bot.StartReceiving();
+
+            Bot.OnCallbackQuery += BotOnCallbackQueryReceived;
+
+            Bot.OnInlineQuery += BotOnInlineQueryReceived;
+
+            Bot.OnInlineResultChosen += BotOnChosenInlineResultReceived;
+
+            
+            Bot.StartReceiving(Array.Empty<UpdateType>());
             //Bot.StopReceiving();
         }
+
+        
 
         private void TelegramBot_Load(object sender, EventArgs e)
         {
@@ -99,50 +121,124 @@ namespace TelegramBot
                 {
                     ReplyKeyboardMarkup ReplyKeyboard = new[]
                     {
-                        new[] { "1.1", "1.2" },
+                        new[] { "1.1" , "1.2", "1.3" },
                         new[] { "2.1", "2.2" },
                     };
 
                     await Bot.SendTextMessageAsync(
                         message.Chat.Id,
-                        "Choose",
+                        "골라주세요~",
                         replyMarkup: ReplyKeyboard);
+                }
+                else if(e.Message.Text == "/요청")
+                {
+                    var RequestReplyKeyboard = new ReplyKeyboardMarkup(new[]
+                    {
+                        KeyboardButton.WithRequestLocation("Location"),
+                        KeyboardButton.WithRequestContact("Contact")
+                    });
+
+                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, "Who or Where are you?", replyMarkup:RequestReplyKeyboard);
                 }
                 else
                 {
-                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, @"사용법 : 
-/예린 - 오빠가 사랑하는 마음을 듬뿍 담아 사랑해 라는 말을 해준다.
-
-/며칠 - 2017년 풋풋했던 대학생때 만나 현재 까지의 사귄 날짜를 말 해준다!
-(/ㅁㅊ ,/며칠 가능)
-/사랑해 오빠가 사랑하는 마음을 더욱 더 듬뿍 담아 사랑해 라는 말을 해준다.
-/인라인 - 개발중
-/키보드 - 개발중");
+                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, Usage, replyMarkup: new ReplyKeyboardRemove());
 
                 }
             }
-
-            //await Bot.SendTextMessageAsync(message.Chat.Id, message.Text);
-
-            
+            //await Bot.SendTextMessageAsync(message.Chat.Id, message.Text);            
         }
 
-        private async void MyBot()
+        /*
+        private static async void BotOnInlineQueryReceived(object sender, ChosenInlineResultEventArgs e)
         {
-            var rkm = new ReplyKeyboardMarkup();
-            rkm.Keyboard = new KeyboardButton[][]
-            {
-                new KeyboardButton[]
-                {
-                    new KeyboardButton("testItem01"),
-                    new KeyboardButton("testItem02")
-                },
-                new KeyboardButton[]
-                {
-                    new KeyboardButton("testItem03")
-                }
+            InlineQueryResultBase[] results = {
+                new InlineQueryResultLocation(
+                    id: "1",
+                    latitude: 40.7058316f,
+                    longitude: -74.2581888f,
+                    title: "New York")   // displayed result
+                    {
+                        InputMessageContent = new InputLocationMessageContent(
+                            latitude: 40.7058316f,
+                            longitude: -74.2581888f)    // message if result is selected
+                    },
+
+                new InlineQueryResultLocation(
+                    id: "2",
+                    latitude: 13.1449577f,
+                    longitude: 52.507629f,
+                    title: "Berlin") // displayed result
+                    {
+                        InputMessageContent = new InputLocationMessageContent(
+                            latitude: 13.1449577f,
+                            longitude: 52.507629f)   // message if result is selected
+                    }
             };
-            
+
+            await Bot.AnswerInlineQueryAsync(
+                e.ChosenInlineResult.InlineMessageId,
+                results,
+                isPersonal: true,
+                cacheTime: 0);
         }
+        */
+        private static async void BotOnInlineQueryReceived(object sender, InlineQueryEventArgs inlineQueryEventArgs)
+        {
+            Console.WriteLine($"Received inline query from: {inlineQueryEventArgs.InlineQuery.From.Id}");
+
+            InlineQueryResultBase[] results = {
+                new InlineQueryResultLocation(
+                    id: "1",
+                    latitude: 40.7058316f,
+                    longitude: -74.2581888f,
+                    title: "New York")   // displayed result
+                    {
+                        InputMessageContent = new InputLocationMessageContent(
+                            latitude: 40.7058316f,
+                            longitude: -74.2581888f)    // message if result is selected
+                    },
+
+                new InlineQueryResultLocation(
+                    id: "2",
+                    latitude: 13.1449577f,
+                    longitude: 52.507629f,
+                    title: "Berlin") // displayed result
+                    {
+                        InputMessageContent = new InputLocationMessageContent(
+                            latitude: 13.1449577f,
+                            longitude: 52.507629f)   // message if result is selected
+                    }
+            };
+
+            await Bot.AnswerInlineQueryAsync(
+                inlineQueryEventArgs.InlineQuery.Id,
+                results,
+                isPersonal: true,
+                cacheTime: 0);
+        }
+
+
+        private static void BotOnChosenInlineResultReceived(object sender, ChosenInlineResultEventArgs chosenInlineResultEventArgs)
+        {
+            Console.WriteLine($"Received inline result: {chosenInlineResultEventArgs.ChosenInlineResult.ResultId}");
+        }
+
+        //인라인 응답 이벤트
+        private static async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
+        {
+            var callbackQuery = callbackQueryEventArgs.CallbackQuery;
+
+            await Bot.AnswerCallbackQueryAsync(
+                callbackQuery.Id,
+                $"Received {callbackQuery.Data}");
+
+            await Bot.SendTextMessageAsync(
+                callbackQuery.Message.Chat.Id,
+                $"Received {callbackQuery.Data}");
+        }
+
+
+
     }
 }
